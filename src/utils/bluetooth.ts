@@ -18,7 +18,7 @@ let bleCb = (data: SensorRecordList) => {}; // Callback function to handle recei
 const HandleCharacteristic = (event: Event) => {
     const value = (event.target as BluetoothRemoteGATTCharacteristic).value;
     if(!value) return;
-
+ 
     // Check if the received data is "START" or "END"
     if(value.buffer.byteLength <= 5) {
         const data = new TextDecoder().decode(value);

@@ -24,6 +24,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-google-charts": "^4.0.1",
+    "react-material-ui-carousel": "^3.4.2",
     "react-plotly.js": "^2.6.0",
     "react-scripts": "5.0.1",
     "ts-proto": "^1.170.0",
