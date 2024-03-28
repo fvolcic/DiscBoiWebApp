@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+message SensorRecord {
+     int32 timestamp = 1;
+
+     float lowspeedAccX = 2;
+     float lowspeedAccY = 3;
+     float lowspeedAccZ = 4;
+
+     float highspeedAccX = 5;
+     float highspeedAccY = 6;
+     float highspeedAccZ = 7;
+
+     float gyroX = 8;
+     float gyroY = 9;
+     float gyroZ = 10;
+
+     int32 magX = 11;
+     int32 magY = 12;
+     int32 magZ = 13;
+}
+
+message SensorRecordList {
+     repeated SensorRecord records = 1;
+}
