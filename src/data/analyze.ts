@@ -24,7 +24,7 @@ const CalculateSpeed = (data: SensorRecordList): number => {
 
         let accel = Math.sqrt(xSpeed * xSpeed + ySpeed * ySpeed);
 
-        speed += accel * deltaMillis;
+        speed += accel * (deltaMillis / 1000);
     }
 
     // return MPH
