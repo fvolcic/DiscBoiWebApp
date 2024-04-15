@@ -1,6 +1,8 @@
 import React from "react";
 import { SensorRecordList } from "../model/protos/sensor";
 
+import { HeatshrinkDecoder } from "heatshrink-ts";
+
 //Define BLE Device Specs
 var deviceName = "DiscBoi";
 var bleService = "19b10000-e8f2-537e-4f6c-d104768a1214";
@@ -26,8 +28,16 @@ const HandleCharacteristic = (event: Event) => {
             databuffer = new Uint8Array(0);
             return;
         } else if(data === "END") {
-            console.log(databuffer);
-            const sensorData = SensorRecordList.decode(databuffer);
+            console.log("Compressed: ", databuffer);
+            console.log("Compressed Size: ", databuffer.length);
+            let decoder = new HeatshrinkDecoder(8, 4, 32);
+            
+            decoder.process(databuffer);
+            const decompressed = decoder.getOutput(); 
+
+            console.log("Decompressed: ", decompressed);
+            const sensorData = SensorRecordList.decode(decompressed);
+
             console.log(sensorData);
             bleCb(sensorData);
             databuffer = new Uint8Array(0);
